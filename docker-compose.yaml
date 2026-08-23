@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: applicant-postgres
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: applicant_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  jobtracker-backend:
+    container_name: jobtracker-backend
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - ./job-application-tracker/backend:/app
+    ports:
+      - "8004:8000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: job_tracker_db
+      DB_USER: postgres
+      DB_PASSWORD: password
+    tty: true
+    command: sh -c "while sleep 1000; do :; done"
+
+volumes:
+  postgres_data:
