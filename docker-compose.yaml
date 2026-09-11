@@ -32,5 +32,17 @@ services:
     tty: true
     command: sh -c "while sleep 1000; do :; done"
 
+
+  jobtracker-frontend:
+   container_name: jobtracker-frontend
+   image: node:20-alpine
+   working_dir: /app
+   volumes:
+    - ./job-application-tracker/frontend:/app
+   ports:
+    - "5173:5173"
+   tty: true
+   command: sh -c "while sleep 1000; do :; done"
+
 volumes:
   postgres_data:

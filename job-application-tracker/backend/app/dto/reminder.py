@@ -11,19 +11,19 @@ class CreateReminderDTO(BaseModel):
     job_description: str | None = None
     source: str | None = None
     deadline: date | None = None
-    reminder_date: date | None = None
+    remind_at: date | None = None
     notes: str | None = None
 
 
 class ReminderResponseDTO(BaseModel):
-    reminder_id: UUID
+    id: UUID
     company_name: str
     job_title: str
     job_url: str | None
     job_description: str | None
     source: str | None
     deadline: date | None
-    reminder_date: date | None
+    remind_at: date | None
     notes: str | None
 
     model_config = {
@@ -47,3 +47,15 @@ class ReminderListResponseDTO(BaseModel):
     page_size: int
     total: int
     total_pages: int
+
+
+
+class UpdateReminderDTO(BaseModel):
+    company_name: str | None = None
+    job_title: str | None = None
+    job_url: str | None = None
+    job_description: str | None = None
+    source: str | None = None
+    deadline: date | None = None
+    remind_at: date | None = None
+    notes: str | None = None

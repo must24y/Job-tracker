@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.models.job_application import JobApplication
 from app.dto.job_application import CreateJobApplicationDTO
 
+from uuid import UUID
 
 import math
 
@@ -20,7 +21,7 @@ from app.dto.job_application import (
 def create_job_application(
     db: Session,
     payload: CreateJobApplicationDTO,
-    user_id
+    user_id:UUID,
 ) -> JobApplication:
 
     application = JobApplication(

@@ -33,7 +33,8 @@ class SearchJobApplicationsDTO(BaseModel):
 
 
 class JobApplicationResponseDTO(BaseModel):
-    application_id: UUID
+    id: UUID ##sohereilearntthatfortheresponsemodel_validatenmsshldbesame
+  ##butonlyforifyouareusingmodel_vlaidate
     company_name: str
     job_title: str
     job_description: str | None
