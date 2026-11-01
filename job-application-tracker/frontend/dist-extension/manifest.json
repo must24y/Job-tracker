@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Job Tracker",
+  "version": "1.0.0",
+  "description": "Save and manage job applications while browsing job listings.",
+  "action": {
+    "default_title": "Open Job Tracker"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "extension.html"
+  },
+  "permissions": [
+    "sidePanel"
+  ],
+  "content_scripts": [
+  {
+    "matches": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "js": [
+      "content.js"
+    ]
+  }
+]
+}
